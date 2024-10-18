@@ -1,0 +1,9 @@
+.plants_list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.name{
+    margin-bottom: 20px;
+}

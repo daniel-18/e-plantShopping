@@ -1,13 +1,15 @@
 import Product from "./product"
+import category from "./category.module.css"
 
-
-function Category({props}){
+function Category(props){
     return(
         <div className="category">
-            <h1 className="name">{props.category}</h1>
+            <h1 className={category.name}>{props.category}</h1>
+            <div className={category.plants_list}>
             {
-                props.plants.map((plant)=> {<Product plant={plant}/>})
+                props.plants.map((plant)=><Product key={plant.name} plant={plant}/>)
             }
+            </div>
         </div>
     );
 }
