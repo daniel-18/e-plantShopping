@@ -18,8 +18,16 @@
 .details{
     padding: 10px;
 }
-.action{
+.action_add{
     background-color: #222222;
+    margin: 10px;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.action_remove{
+    background-color: red;
     margin: 10px;
     padding: 10px;
     color: #ffffff;

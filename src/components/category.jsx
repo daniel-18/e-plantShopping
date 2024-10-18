@@ -7,7 +7,7 @@ function Category(props){
             <h1 className={category.name}>{props.category}</h1>
             <div className={category.plants_list}>
             {
-                props.plants.map((plant)=><Product key={plant.name} plant={plant}/>)
+                props.plants.map((plant, index)=><Product key={plant.name} index={index} plant={plant}/>)
             }
             </div>
         </div>
