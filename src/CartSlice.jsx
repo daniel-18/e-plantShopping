@@ -7,25 +7,36 @@ export const CartSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      state = {...state, items: [...state.items, action.payload]}
-      return state
+      state.items.push(action.payload)
+      
     },
     removeItem: (state, action) => {
-      const newItems = state.items.filter(item=> item.index!=action.payload.index)
-      state = {...state, items: newItems};
-      return state
+      const newItems = state.items.filter(item=> item.item.name!=action.payload.item.name)
+      state.items = newItems
+
     },
     updateQuantity: (state, action) => {
-      const items = state.items.map((item, index)=>{
-        if(item.index == action.payload.index){
-          if(action.payload.actionType == "inc"){
-            return {...item, count: item.count++}
-          }else{
-            return {...item, count: item.count--}
-          }
+      
+      let plant = state.items.find((plant)=> plant.item.name == action.payload.name)
+      
+      let i = state.items.findIndex((data)=> plant.item.name == data.item.name)
+
+      if(action.payload.actionType == "inc"){
+        
+        let newItem = {...plant, count: plant.count++}
+        state.items = state.items.splice(i, 1, newItem)
+        
+      }else{
+        if(plant.count ==1){
+          const newItems = state.items.filter(item=> item.item.name!=plant.item.name)
+          state.items = newItems;
+          return 
         }
-      })
-      state = {...state, items: newItems}
+        let newItem = {...plant, count: plant.count--}
+        state.items = state.items.splice(i, 1, newItem)
+      
+      }
+
     },
   },
 });
